@@ -128,6 +128,7 @@ Other Changes:
 - InputScalar: Fixed manual input when using %03d style width in display format string. (#5165, #3133)
 - InputScalar: Automatically allow hexadecimal input when format is %X (without extra flag).
 - InputScalar: Automatically allow scientific input when format is float/double (without extra flag).
+- Nav: Fixed nav movement in a scope with only one disabled item from focusing the disabled item. (#5189)
 - IsItemHovered(): added ImGuiHoveredFlags_NoNavOverride to disable the behavior where the
   return value is overriden by focus when gamepad/keyboard navigation is active.
 - InputText: Fixed pressing Tab emitting two tabs characters because of dual Keys/Chars events being
@@ -142,7 +143,10 @@ Other Changes:
 - Stack Tool: Added option to copy item path to clipboard. (#4631)
 - Drawlist: Fixed PathArcTo() emitting terminating vertices too close to arc vertices. (#4993) [@thedmd]
 - DrawList: Fixed texture-based anti-aliasing path with RGBA textures (#5132, #3245) [@cfillion]
+- Misc: Fixed calling GetID("label") _before_ a widget emitting this item inside a group (such as InputInt())
+  from causing an assertion when closing the group. (#5181).
 - Misc: Fixed IsAnyItemHovered() returning false when using navigation.
+- Misc: Allow redefining IM_COL32_XXX layout macros to facilitate use on big-endian systems. (#5190, #767, #844)
 - Misc: Added IMGUI_STB_SPRINTF_FILENAME to support custom path to stb_sprintf. (#5068, #2954) [@jakubtomsu]
 - Misc: Added constexpr to ImVec2/ImVec4 inline constructors. (#4995) [@Myriachan]
 - Misc: Updated stb_truetype.h from 1.20 to 1.26 (many fixes). (#5075)
@@ -154,6 +158,7 @@ Other Changes:
   reported incorrectly on Linux/X11, due to a bug in GLFW. [@rokups]
 - Backends: SDL: Fixed dragging out viewport broken on some SDL setups. (#5012) [@rokups]
 - Backends: SDL: Added support for extra mouse buttons (SDL_BUTTON_X1/SDL_BUTTON_X2). (#5125) [@sgiurgiu]
+- Backends: SDL, OpenGL3: Fixes to facilitate building on AmigaOS4. (#5190) [@afxgroup]
 - Backends: OSX: Monitor NSKeyUp events to catch missing keyUp for key when user press Cmd + key (#5128) [@thedmd]
 - Examples: Emscripten: Fix building for latest Emscripten specs. (#3632)
 
